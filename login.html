@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Painel CBTT</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Supabase JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body style="align-items: center; justify-content: center; min-height: 100vh;">
+
+    <main style="display: flex; justify-content: center; align-items: center; width: 100%;">
+        <div class="container" style="max-width: 450px;">
+            <div class="card" style="text-align: center;">
+                <div class="logo-container" style="justify-content: center; margin-bottom: 1.5rem;">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                </div>
+                <div class="card-title">
+                    <h2>Acesso Restrito</h2>
+                    <p>Entre com suas credenciais de gestor.</p>
+                </div>
+
+                <div id="alertMessage" class="alert"></div>
+
+                <form id="loginForm" style="text-align: left;">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="diretoria@cbtt.org.br">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn btn-primary" style="margin-top: 10px;">
+                        <span class="btn-text">Entrar no Dashboard</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="index.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">&larr; Voltar para a página de Captura</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/config.example.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
