@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gestão - Demandas CBTT</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Supabase JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Chart.js para os Gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+            <div class="header-title">
+                <h1>Painel de Controle</h1>
+                <p>Monitoramento de Demandas</p>
+            </div>
+        </div>
+        <a href="#" id="logoutBtn" class="auth-btn" style="border-color: var(--danger); color: var(--danger);">Sair da Conta</a>
+    </header>
+
+    <main>
+        <div class="container dash-container">
+            <!-- Loading Indicator -->
+            <div id="loadingDash" style="text-align: center; padding: 3rem;">
+                <div class="spinner" style="display:inline-block; border-top-color: var(--primary-color);"></div>
+                <p style="margin-top: 1rem; color: var(--text-muted);">Carregando base de dados...</p>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div id="dashContent" style="display: none;">
+                
+                <!-- Cards de Estatisticas -->
+                <div class="stat-grid">
+                    <div class="stat-card stat-total">
+                        <span class="stat-label">Total Recebido</span>
+                        <span class="stat-value" id="countTotal">0</span>
+                    </div>
+                    <div class="stat-card stat-state">
+                        <span class="stat-label">Estado mais Crítico</span>
+                        <span class="stat-value" id="topState">-</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Maior Problema</span>
+                        <span class="stat-value" id="topIssue" style="font-size: 1.5rem; line-height: 1.2; margin-top: 5px;">-</span>
+                    </div>
+                </div>
+
+                <!-- Gráficos -->
+                <div class="chart-grid">
+                    <div class="chart-card">
+                        <h3>Demandas por Estado (UF)</h3>
+                        <canvas id="chartUF"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Por Categoria de Problema</h3>
+                        <canvas id="chartProblema"></canvas>
+                    </div>
+                </div>
+
+                <!-- Tabela -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3>Detalhamento das Demandas</h3>
+                        <div class="table-controls">
+                            <select id="filterUF">
+                                <option value="ALL">Todos os Estados</option>
+                                <!-- Populated dynamically -->
+                            </select>
+                            <select id="filterProblema">
+                                <option value="ALL">Todos os Problemas</option>
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Nome / CR</th>
+                                    <th>UF</th>
+                                    <th>Tipo de Problema</th>
+                                    <th>Descrição</th>
+                                    <th>Anexo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <!-- Preenchido via javascript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/config.example.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
