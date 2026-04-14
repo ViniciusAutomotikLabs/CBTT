@@ -69,4 +69,3 @@ Como esta aplicação é puramente estática:
 
 ### Criação de Conta
 Como o sistema não possui registro aberto, o Presidente ou Executivo de T.I deverá acessar o painel do Supabase, clicar no menu **"Authentication" > "Add User"** e preencher manualmente o e-mail e a senha inicial do membro da diretoria que atuará no comitê.
-// teste push direto Tue Apr 14 17:36:07 UTC 2026
